@@ -13,7 +13,7 @@
         label = "BATTERY";
         io-channels = <&adc 0>; // D0 is P0.02 (AIN0)
         output-ohms = <1000000>;
-        full-ohms = <6500000>; // Further scaled for single AA (1.1V is now ~10%, was 0%)
+        full-ohms = <8500000>; // Adjusted based on user metrics (1.425V @ D0=0.68V should be ~100%)
     };
 
     chosen {
