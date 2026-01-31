@@ -265,64 +265,59 @@
 
         default_layer {
             display-name = "Default";
-
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  | W+D  |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "("  |  |  ")"  |  N   |  M    |  ,    |  .   |   ;   |   '   |
-            //                     | ALT  | LANG | TAB |  ENTER |  | SPACE | BKSP  | BSPC  | GUI   |
-
+            // | ESC | 1 | 2 | 3 | 4 | 5 | 6 |     | 7 | 8 | 9 | 0 | - | Fn | ? |
+            // | Alt | Q | W | E | R | T | ? |     | Y | U | I | O | P | Caps | ? |
+            // | Shift | A | S | D | F | G | ? |   | H | J | K | L | : | @ | ? |
+            // | Ctrl | * | Z | X | C | V | B |     | N | M | , | . | ^ | Dn | Fn |
+            // | Win | Alt | E/J | tab | Enter | ? | | space | BackSpace | AltGr | ? | ? | ? | ? |
             bindings = <
-&kp ESC       &mm_n1         &mm_n2         &mm_n3             &mm_n4           &mm_n5         &mm_n6    &mm_n7          &mm_n8     &mm_n9     &mm_n0     &lt 3 PRINTSCREEN
-&kp LEFT_ALT  &kp Q          &kp W          &kp E              &kp R            &kp T          &kp Y     &kp U           &kp I      &kp O      &kp P      &kp DEL
-&kp LSHIFT    &ht_l0_ctrl_a 0 A     &kp S          &ht_d 0 D          &ht_l0_alt 0 F   &ht_g 4 G      &kp H     &mt RALT J      &kp K      &kp L      &mm_minus  &kp SLASH
-&kp LCTRL     &kp Z          &ht_l0_ctrl_x 0 X     &ht_l0_ctrl_c 0 C  &ht_l0_ctrl_v 0 V     &kp B          &kp JP_LPAREN  &kp JP_RPAREN  &kp N     &kp M           &kp COMMA  &kp DOT            &mm_semi   &mm_quote
-&kp LALT      &td_lang       &lt 1 ENTER    &ht_tab 0 TAB  &kp BACKSPACE  &kp SPACE      &kp BSPC  &kp LEFT_GUI
+&kp ESC      &mm_n1      &mm_n2      &mm_n3      &mm_n4      &mm_n5      &mm_n6         &mm_n7      &mm_n8      &mm_n9      &mm_n0      &mm_minus   &lt 3 F14   &none
+&kp LALT     &kp Q       &kp W       &kp E       &kp R       &kp T       &none          &kp Y       &kp U       &kp I       &kp O       &kp P       &kp CAPS    &none
+&kp LSHFT    &ht_l0_ctrl_a 0 A &kp S &ht_d 0 D &ht_l0_alt 0 F &ht_g 4 G &none          &kp H       &mt RALT J  &kp K       &kp L       &mm_semi    &mm_quote   &none
+&kp LCTRL    &kp KP_MULTIPLY &kp Z &ht_l0_ctrl_x 0 X &ht_l0_ctrl_c 0 C &ht_l0_ctrl_v 0 V &kp B  &kp N  &kp M    &kp COMMA   &kp DOT     &kp UP      &kp DOWN    &lt 3 PRINTSCREEN
+&kp LWIN     &kp RALT    &td_lang    &ht_tab 0 TAB &lt 1 ENTER &none     &kp SPACE      &kp BSPC    &kp RALT    &none       &none       &kp LEFT    &kp RIGHT   &none
             >;
         };
 
         fn_layer {
             display-name = "Raise";
-
             bindings = <
-&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans  &trans
-&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp UP    &trans     &trans   &trans
-&kp LSHIFT  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
-&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans   &trans  &trans  &trans
-&to 0       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans  &trans  &none
+&trans      &trans  &trans  &trans  &trans  &trans  &none   &trans  &trans    &kp UP    &trans     &trans  &trans  &none
+&kp LSHIFT  &trans  &trans  &trans  &trans  &trans  &none   &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &none
+&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans  &trans  &none
+&to 0       &trans  &trans  &trans  &trans  &none   &trans  &trans  &trans    &none     &none      &trans  &trans  &none
             >;
         };
 
         num_layer {
             bindings = <
-&trans  &trans  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp SLASH     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp KP_NUMBER_0  &trans           &kp KP_DOT       &kp KP_PLUS   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&to 0   &trans  &kp ENTER        &trans           &trans           &trans        &trans  &trans
+&trans  &trans  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp SLASH     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &none
+&trans  &trans  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &none   &trans  &trans  &trans  &trans  &trans  &trans  &none
+&trans  &trans  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS  &none   &trans  &trans  &trans  &trans  &trans  &trans  &none
+&trans  &trans  &kp KP_NUMBER_0  &trans           &kp KP_DOT       &kp KP_PLUS   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &none
+&to 0   &trans  &kp ENTER        &trans           &trans           &none         &trans  &trans  &trans  &none   &none   &trans  &trans  &none
             >;
         };
 
         setup_layer {
             display-name = "Lower";
-
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans     &trans    &trans    &trans     &sys_reset  &bootloader
-&kp F1      &kp F2        &kp F3        &kp F4        &kp F5        &kp F6        &kp F7     &kp F8    &kp UP    &kp F10    &kp F11     &kp F12
-&kp JP_BACKQUOTE   &kp EXCL      &kp JP_AT     &kp HASH      &kp DOLLAR    &kp PRCNT     &kp JP_CARET  &kp LEFT  &kp DOWN  &kp RIGHT  &kp JP_RPAREN    &kp JP_TILDE
-&trans      &trans        &trans        &trans        &trans        &trans        &trans     &trans    &trans    &mm_minus  &mm_equal  &kp JP_LBRACKET     &kp JP_RBRACKET  &kp JP_PIPE
-&to 0       &trans        &trans        &trans        &trans        &trans        &trans     &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans     &trans    &trans    &trans     &sys_reset  &bootloader &none &none
+&kp F1      &kp F2        &kp F3        &kp F4        &kp F5        &kp F6        &none      &kp F7    &kp F8    &kp UP     &kp F10     &kp F11     &kp F12 &none
+&kp JP_BACKQUOTE   &kp EXCL      &kp JP_AT     &kp HASH      &kp DOLLAR    &kp PRCNT     &none      &kp JP_CARET  &kp LEFT  &kp DOWN  &kp RIGHT  &kp JP_RPAREN  &kp JP_TILDE &none
+&trans      &trans        &trans        &trans        &trans        &trans        &trans     &trans    &trans    &mm_minus  &mm_equal  &kp JP_LBRACKET  &kp JP_RBRACKET &kp JP_PIPE
+&to 0       &trans        &trans        &trans        &trans        &none         &trans     &trans    &trans    &none      &none      &trans      &trans &none
             >;
         };
 
         game_layer {
             bindings = <
-&kp ESC    &kp N1  &kp N2  &kp N3     &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0     &trans
-&kp LALT   &kp Q   &kp F   &kp E      &kp R   &kp T   &kp Y   &kp U   &kp I   &kp O   &kp P      &trans
-&kp LSHFT  &kp C   &kp A   &kp W      &kp D   &kp G   &kp H   &kp J   &kp K   &kp L   &mm_minus  &kp SLASH
-&kp LCTRL  &kp Z   &kp X   &kp S      &kp V   &kp B   &trans  &trans  &kp N   &kp M   &kp COMMA  &kp DOT   &mm_semi  &mm_quote
-&trans     &trans  &kp SPACE  &trans     &trans  &trans  &trans  &to 0
+&kp ESC    &kp N1  &kp N2  &kp N3     &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0     &trans  &trans  &none
+&kp LALT   &kp Q   &kp F   &kp E      &kp R   &kp T   &none   &kp Y   &kp U   &kp I   &kp O      &kp P   &trans  &none
+&kp LSHFT  &kp C   &kp A   &kp W      &kp D   &kp G   &none   &kp H   &kp J   &kp K   &kp L      &mm_minus &kp SLASH &none
+&kp LCTRL  &kp Z   &kp X   &kp S      &kp V   &kp B   &trans  &kp N   &kp M   &kp COMMA &kp DOT  &mm_semi &mm_quote &none
+&trans     &trans  &kp SPACE  &trans  &trans  &none   &trans  &to 0   &trans  &none   &none      &trans  &trans  &none
             >;
         };
     };

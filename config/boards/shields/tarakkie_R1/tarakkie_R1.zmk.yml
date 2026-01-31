@@ -1,0 +1,12 @@
+file_format: "1"
+id: tarakkie_R1
+name: Tarakkie R1
+type: shield
+url: https://github.com/tara0919/Tarakkie_R1
+requires: [seeeduino_xiao_ble]
+features:
+  - keys
+  - studio
+siblings:
+  - tarakkie_R1_left
+  - tarakkie_R1_right

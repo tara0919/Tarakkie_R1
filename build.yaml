@@ -20,9 +20,12 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: tarakkie_v1_left
+    shield: tarakkie_R1_left
     snippet: studio-rpc-usb-uart
-    artifact-name: tarakkie_v1_left_studio
+    artifact-name: tarakkie_R1_left_studio
   - board: seeeduino_xiao_ble
-    shield: tarakkie_v1_right
-    artifact-name: tarakkie_v1_right
+    shield: tarakkie_R1_right
+    artifact-name: tarakkie_R1_right
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
+    artifact-name: settings_reset
