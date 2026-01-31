@@ -13,7 +13,7 @@
         label = "BATTERY";
         io-channels = <&adc 0>; // D0 is P0.02 (AIN0)
         output-ohms = <1000000>;
-        full-ohms = <2000000>;
+        full-ohms = <5600000>; // Scaled for single AA (1.5V -> 4.2V)
     };
 
     chosen {
@@ -21,7 +21,13 @@
         zmk,physical-layout = &physical_layout0;
         zmk,battery = &vbatt;
     };
+};
 
+&adc {
+    status = "okay";
+};
+
+/ {
     physical_layout0: physical_layout0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
