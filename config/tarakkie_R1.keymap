@@ -277,6 +277,30 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        win+d {
+            bindings = <&kp LG(D)>;
+            key-positions = <30 59>;
+        };
+
+        alt+tab {
+            bindings = <&kp TAB>;
+            key-positions = <31 58>;
+        };
+
+        alt+f4 {
+            bindings = <&kp LA(F4)>;
+            key-positions = <31 30 59>;
+        };
+
+        paste {
+            bindings = <&mt LG(V) LC(LS(V))>;
+            key-positions = <59 45>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -291,7 +315,7 @@
 
             bindings = <
 &kp ESC    &mm_n1         &mm_n2       &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_minus    &trans     &mo 3
-&kp LALT   &kp Q          &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt P LC(P)  &mm_equal  &kp DELETE
+&kp LALT   &kp Q          &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt P LC(P)  &mm_equal  &mt LC(LA(DELETE)) DELETE
 &kp LSHFT  &mt A LC(A)    &mt S LC(S)  &mt D LC(D)  &mt F LEFT_ALT  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &trans     &kp RIGHT_SHIFT
 &kp LCTRL  &trans         &mt Z LC(Z)  &mt X LC(X)  &mt C LC(C)     &mt V LC(V)  &mt B LC(B)  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP     &kp RCTRL
 &kp LWIN   &kp LG(LA(S))  &trans       &kp LANG1    &kp TAB                      &lt 1 SPACE  &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN   &kp RIGHT
@@ -314,8 +338,8 @@
 &trans  &kp T   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SLASH     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp S   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY               &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp H   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp R            &kp KP_NUMBER_0  &trans           &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans           &trans           &trans                            &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &to 0   &kp R            &kp KP_NUMBER_0  &trans           &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans           &trans           &kp BACKSPACE                     &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
