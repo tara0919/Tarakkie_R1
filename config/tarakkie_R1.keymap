@@ -30,6 +30,7 @@
 #define JP_RPAREN       LS(N9)            // )
 #define JP_LBRACE       LS(RBKT)          // {
 #define JP_RBRACE       LS(BSLH)          // }
+#define JP_PIPE         LS(INT3)          // |
 
 #define AS(keycode) &as LS(keycode) keycode
 
@@ -87,6 +88,34 @@
             #binding-cells = <0>;
             bindings = <&to 0 &kp LC(V)>;
             label = "L0_CTRL_V";
+        };
+
+        macro_kakko: macro_kakko {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&kp LANG1>, <&kp JP_LBRACKET>, <&kp JP_RBRACKET>, <&kp LEFT>;
+        };
+
+        macro_paren: macro_paren {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&kp LANG1>, <&kp JP_LPAREN>, <&kp JP_RPAREN>, <&kp LEFT>;
+        };
+
+        macro_00: macro_00 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp KP_NUMBER_0 &kp KP_NUMBER_0>;
+        };
+
+        macro_wa: macro_wa {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp W &kp A>;
         };
     };
 
@@ -275,6 +304,13 @@
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        mm_bslash: mm_bslash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp INT1>, <&kp JP_PIPE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     combos {
@@ -299,6 +335,42 @@
             bindings = <&mt LG(V) LC(LS(V))>;
             key-positions = <59 45>;
         };
+
+        combo_lbkt {
+            bindings = <&kp JP_LBRACKET>;
+            key-positions = <30 31>;
+            timeout-ms = <50>;
+        };
+
+        combo_rbkt {
+            bindings = <&kp JP_RBRACKET>;
+            key-positions = <34 35>;
+            timeout-ms = <50>;
+        };
+
+        combo_kakko {
+            bindings = <&macro_kakko>;
+            key-positions = <30 31 34 35>;
+            timeout-ms = <50>;
+        };
+
+        combo_lparen {
+            bindings = <&kp JP_LPAREN>;
+            key-positions = <17 18>;
+            timeout-ms = <50>;
+        };
+
+        combo_rparen {
+            bindings = <&kp JP_RPAREN>;
+            key-positions = <21 22>;
+            timeout-ms = <50>;
+        };
+
+        combo_paren {
+            bindings = <&macro_paren>;
+            key-positions = <17 18 21 22>;
+            timeout-ms = <50>;
+        };
     };
 
     keymap {
@@ -314,11 +386,11 @@
             // | Win | Alt | E/J | tab | Enter | ? | | space | BackSpace | AltGr | ? | ? | ? | ? |
 
             bindings = <
-&kp ESC    &mm_n1         &mm_n2       &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_minus    &trans     &mo 3
-&kp LALT   &kp Q          &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt P LC(P)  &mm_equal  &mt LC(LA(DELETE)) DELETE
-&kp LSHFT  &mt A LC(A)    &mt S LC(S)  &mt D LC(D)  &mt F LEFT_ALT  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &trans     &kp RIGHT_SHIFT
-&kp LCTRL  &to 2          &mt Z LC(Z)  &mt X LC(X)  &mt C LC(C)     &mt V LC(V)  &mt B LC(B)  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP     &kp RCTRL
-&kp LWIN   &kp LG(LA(S))  &trans       &kp LANG1    &kp TAB                      &lt 1 SPACE  &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN   &kp RIGHT
+&kp ESC    &mm_n1         &mm_n2       &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_minus    &kp JP_TILDE  &lt 3 JP_BACKQUOTE
+&kp LALT   &kp Q          &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt P LC(P)  &mm_equal     &mt LC(LA(DELETE)) DELETE
+&kp LSHFT  &mt A LC(A)    &mt S LC(S)  &mt D LC(D)  &mt F LEFT_ALT  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &kp SLASH     &kp RIGHT_SHIFT
+&kp LCTRL  &to 2          &mt Z LC(Z)  &mt X LC(X)  &mt C LC(C)     &mt V LC(V)  &mt B LC(B)  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP        &mm_bslash
+&kp LWIN   &kp LG(LA(S))  &kp GRAVE    &kp LANG1    &kp TAB                      &lt 1 SPACE  &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN      &kp RIGHT
             >;
         };
 
@@ -338,19 +410,19 @@
 &trans  &kp T   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SLASH     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp S   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY               &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp H   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &to 0   &kp R            &kp KP_NUMBER_0  &trans           &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans           &trans           &kp BACKSPACE                     &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &to 0   &kp R            &kp KP_NUMBER_0  &macro_00        &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &macro_wa        &trans           &kp BACKSPACE                     &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         setup_layer {
             display-name = "Lower";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &sys_reset  &bootloader  &bt BT_CLR_ALL  &trans
-&trans      &trans        &trans        &trans        &trans        &trans                &trans  &trans  &trans  &trans      &trans       &trans          &trans
-&trans      &trans        &trans        &trans        &trans        &trans                &trans  &trans  &trans  &trans      &trans       &trans          &trans
-&trans      &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans      &trans       &trans          &trans
-&trans      &trans        &trans        &trans        &trans                      &trans  &trans  &trans  &trans  &trans      &trans       &trans          &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none   &none   &none   &none   &sys_reset  &bootloader  &bt BT_CLR_ALL  &none
+&none       &none         &none         &none         &none         &none                 &none   &none   &none   &none       &none        &none           &none
+&none       &none         &none         &none         &none         &none                 &none   &none   &none   &none       &none        &none           &none
+&none       &none         &none         &none         &none         &none         &none   &none   &none   &none   &none       &none        &none           &none
+&none       &none         &none         &none         &none                       &none   &none   &none   &none   &none       &none        &none           &none
             >;
         };
     };
