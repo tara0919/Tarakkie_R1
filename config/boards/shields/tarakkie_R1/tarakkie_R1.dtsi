@@ -138,13 +138,16 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,6) RC(4,7) RC(4,8) RC(4,9) RC(4,10)
 
 / {
     aliases {
-        indicator-led = &blue_led;
+        led-red = &led0;
+        led-green = &led1;
+        led-blue = &led2;
     };
 
     leds {
         compatible = "gpio-leds";
-        blue_led: blue_led {
-            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
-        };
+        status = "okay";
+        led0: led_0 { gpios = <&gpio0 26 GPIO_ACTIVE_LOW>; };
+        led1: led_1 { gpios = <&gpio0 30 GPIO_ACTIVE_LOW>; };
+        led2: led_2 { gpios = <&gpio0 6 GPIO_ACTIVE_LOW>; };
     };
 };
