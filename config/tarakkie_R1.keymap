@@ -95,7 +95,7 @@
             #binding-cells = <0>;
             wait-ms = <30>;
             tap-ms = <30>;
-            bindings = <&kp LANG1 &kp JP_LBRACKET &kp JP_RBRACKET &kp LEFT>;
+            bindings = <&kp LANG1 &kp JP_LBRACKET &kp JP_RBRACKET &kp ENTER &kp LEFT>;
         };
 
         macro_paren: macro_paren {
@@ -103,7 +103,7 @@
             #binding-cells = <0>;
             wait-ms = <30>;
             tap-ms = <30>;
-            bindings = <&kp LANG1 &kp JP_LPAREN &kp JP_RPAREN &kp LEFT>;
+            bindings = <&kp LANG1 &kp JP_LPAREN &kp JP_RPAREN &kp ENTER &kp LEFT>;
         };
 
         macro_00: macro_00 {
@@ -120,6 +120,11 @@
     };
 
     behaviors {
+        /omit-if-no-ref/ &mt {
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+        };
+
         ht_tab: ht_tab {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -408,11 +413,11 @@
 
         num_layer {
             bindings = <
-&trans  &kp T   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SLASH     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp S   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY               &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp H   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &to 0   &kp R            &kp KP_NUMBER_0  &macro_00        &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &macro_wa        &trans           &kp BACKSPACE                     &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LANG2  &kp T   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SLASH     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp S   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY               &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp H   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &to 0   &kp R            &kp KP_NUMBER_0  &macro_00        &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &macro_wa        &trans           &kp BACKSPACE                     &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
