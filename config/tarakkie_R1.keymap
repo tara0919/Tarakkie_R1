@@ -34,6 +34,11 @@
 
 #define AS(keycode) &as LS(keycode) keycode
 
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <300>;
+};
+
 / {
     macros {
         tab_win: tab_win {
@@ -120,11 +125,6 @@
     };
 
     behaviors {
-        &mt {
-            flavor = "tap-preferred";
-            tapping-term-ms = <300>;
-        };
-
         ht_tab: ht_tab {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
