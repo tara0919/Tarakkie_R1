@@ -120,7 +120,7 @@
     };
 
     behaviors {
-        /omit-if-no-ref/ &mt {
+        &mt {
             flavor = "tap-preferred";
             tapping-term-ms = <300>;
         };
