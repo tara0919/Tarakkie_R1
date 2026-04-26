@@ -392,11 +392,11 @@
             // | Win | Alt | E/J | tab | Enter | ? | | space | BackSpace | AltGr | ? | ? | ? | ? |
 
             bindings = <
-&kp ESC    &mm_n1         &mm_n2       &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_minus    &kp JP_TILDE  &lt 3 JP_BACKQUOTE
-&kp LALT   &kp Q          &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt LC(P) P  &mm_equal     &mt LC(LA(DELETE)) DELETE
-&kp LSHFT  &mt LC(A) A    &mt LC(S) S  &mt LC(D) D  &mt F LEFT_ALT  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &kp SLASH     &kp RIGHT_SHIFT
-&kp LCTRL  &to 2          &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C     &mt LC(V) V  &mt LC(B) B  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP        &mm_bslash
-&kp LWIN   &kp LG(LS(S))  &kp GRAVE    &kp LANG1    &kp TAB                      &kp A        &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN      &kp RIGHT
+&kp ESC       &mm_n1        &mm_n2       &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_equal    &kp LG(LS(S))  &mo 3
+&kp TAB       &kp Q         &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt LC(P) P  &mm_equal      &kp CAPSLOCK
+&kp LSHFT     &mt LC(A) A   &mt LC(S) S  &mt LC(D) D  &mt F LEFT_ALT  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &kp SLASH      &mm_bslash
+&kp LCTRL     &to 2         &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C     &mt LC(V) V  &mt LC(B) B  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP         &mt LC(LA(DELETE)) DELETE
+&kp LEFT_ALT  &kp LEFT_WIN  &kp GRAVE    &kp LANG1    &kp TAB                      &lt 1 SPACE  &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN       &kp RIGHT
             >;
         };
 
