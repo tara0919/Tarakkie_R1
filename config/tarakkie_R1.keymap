@@ -328,7 +328,7 @@
         };
 
         alt+tab {
-            bindings = <&kp TAB>;
+            bindings = <&kp LA(TAB)>;
             key-positions = <31 58>;
         };
 
@@ -392,32 +392,32 @@
             // | Win | Alt | E/J | tab | Enter | ? | | space | BackSpace | AltGr | ? | ? | ? | ? |
 
             bindings = <
-&kp ESC       &mm_n1        &mm_n2       &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_equal    &kp LG(LS(S))  &mo 3
-&kp TAB       &kp Q         &kp W        &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt LC(P) P  &mm_equal      &kp CAPSLOCK
-&kp LSHFT     &mt LC(A) A   &mt LC(S) S  &mt LC(D) D  &mt LEFT_ALT F  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &kp SLASH      &mm_bslash
-&kp LCTRL     &to 2         &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C     &mt LC(V) V  &mt LC(B) B  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP         &mt LC(LA(DELETE)) DELETE
-&kp LEFT_ALT  &kp LEFT_WIN  &kp GRAVE    &kp LANG1    &kp TAB                      &lt 1 SPACE  &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN       &kp RIGHT
+&kp ESC       &mm_n1        &mm_n2         &mm_n3       &mm_n4          &mm_n5       &mm_n6       &mm_n7                 &mm_n8         &mm_n9          &mm_n0     &mm_equal    &kp DELETE  &mo 3
+&kp TAB       &kp Q         &kp W          &kp E        &mt LC(R) R     &kp T                     &kp Y                  &mt LC(U) U    &mt LC(I) I     &kp O      &mt LC(P) P  &mm_equal   &kp CAPSLOCK
+&kp LSHFT     &mt LC(A) A   &mt LC(S) S    &mt LC(D) D  &mt LEFT_ALT F  &kp G                     &mt LC(H) H            &kp J          &kp K           &kp L      &mm_minus    &kp SLASH   &mm_bslash
+&kp LCTRL     &to 2         &mt LC(Z) Z    &mt LC(X) X  &mt LC(C) C     &mt LC(V) V  &mt LC(B) B  &kp N                  &kp M          &kp COMMA       &kp DOT    &mm_semi     &kp UP      &kp INSERT
+&kp LEFT_ALT  &kp LEFT_WIN  &kp LG(LS(S))  &kp GRAVE    &kp TAB         &lt 1 SPACE               &mt RIGHT_SHIFT ENTER  &kp BACKSPACE  &kp LANGUAGE_2  &mm_quote  &kp LEFT     &kp DOWN    &kp RIGHT
             >;
         };
 
         fn_layer {
             display-name = "Raise";
             bindings = <
-&trans  &trans                   &trans                         &trans                         &trans                         &trans             &trans  &trans  &trans    &trans    &trans     &trans  &trans  &trans
-&trans  &trans                   &kp LC(LS(TAB))                &kp LC(W)                      &kp LC(TAB)                    &kp LC(T)                  &trans  &trans    &kp UP    &trans     &trans  &trans  &trans
-&trans  &mt LC(NUMBER_1) LG(N1)  &mt LC(NUMBER_2) LG(NUMBER_2)  &mt LC(NUMBER_3) LG(NUMBER_3)  &mt LC(NUMBER_4) LG(NUMBER_4)  &mt LC(N5) LG(N5)          &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans
-&trans  &trans                   &trans                         &trans                         &trans                         &trans             &trans  &trans  &trans    &trans    &trans     &trans  &trans  &trans
-&trans  &trans                   &trans                         &trans                         &trans                                            &trans  &trans  &trans    &trans    &trans     &trans  &trans  &trans
+&trans  &kp F1                   &kp F2                         &kp F3                         &kp F4                         &kp F5             &kp F6  &kp F7  &kp F8      &kp F9    &kp F10    &kp F11  &kp F12  &trans
+&trans  &trans                   &kp LC(LS(TAB))                &kp LC(W)                      &kp LC(TAB)                    &kp LC(T)                  &trans  &trans      &kp UP    &trans     &trans   &trans   &trans
+&trans  &mt LC(NUMBER_1) LG(N1)  &mt LC(NUMBER_2) LG(NUMBER_2)  &mt LC(NUMBER_3) LG(NUMBER_3)  &mt LC(NUMBER_4) LG(NUMBER_4)  &mt LC(N5) LG(N5)          &trans  &kp LEFT    &kp DOWN  &kp RIGHT  &trans   &trans   &trans
+&trans  &trans                   &trans                         &trans                         &trans                         &trans             &trans  &trans  &trans      &trans    &trans     &trans   &trans   &trans
+&trans  &trans                   &trans                         &trans                         &trans                         &trans                     &trans  &kp DELETE  &trans    &trans     &trans   &trans   &trans
             >;
         };
 
         num_layer {
             bindings = <
-&kp LANG2  &kp T   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SLASH     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp S   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY               &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp H   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &to 0   &kp R            &kp KP_NUMBER_0  &macro_00        &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans  &macro_wa        &trans           &kp BACKSPACE                     &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp T   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SLASH     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp S   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY               &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp H   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &to 0   &kp R            &kp KP_NUMBER_0  &macro_00        &kp KP_DOT       &kp KP_PLUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &macro_wa        &trans           &kp BACKSPACE    &kp ENTER                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -425,10 +425,10 @@
             display-name = "Lower";
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none  &none  &sys_reset  &bootloader  &bt BT_CLR_ALL  &none
-&none       &none         &none         &none         &none         &none                &none  &none  &none  &none       &none        &none           &none
+&none       &none         &none         &none         &none         &none                &none  &none  &none  &none       &none        &none           &studio_unlock
 &none       &none         &none         &none         &none         &none                &none  &none  &none  &none       &none        &none           &none
 &none       &none         &none         &none         &none         &none         &none  &none  &none  &none  &none       &none        &none           &none
-&none       &none         &none         &none         &none                       &none  &none  &none  &none  &none       &none        &none           &none
+&none       &none         &none         &none         &none         &none                &none  &none  &none  &none       &none        &none           &none
             >;
         };
     };
