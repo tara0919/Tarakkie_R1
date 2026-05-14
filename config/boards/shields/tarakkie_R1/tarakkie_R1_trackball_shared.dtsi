@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2025 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+    trackball_virtual: trackball_virtual {
+        compatible = "zmk,virtual-input";
+    };
+
+    trackball_listener: trackball_listener {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&trackball_virtual>;
+    };
+};

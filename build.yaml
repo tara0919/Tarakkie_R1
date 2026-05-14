@@ -28,5 +28,8 @@ include:
     shield: tarakkie_R1_right
     artifact-name: tarakkie_R1_right
   - board: seeeduino_xiao_ble
+    shield: tarakkie_R1_trackball
+    artifact-name: tarakkie_R1_trackball
+  - board: seeeduino_xiao_ble
     shield: settings_reset
     artifact-name: settings_reset

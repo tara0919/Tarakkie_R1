@@ -6,7 +6,9 @@ url: https://github.com/tara0919/Tarakkie_R1
 requires: [seeeduino_xiao_ble]
 features:
   - keys
+  - pointer
   - studio
 siblings:
   - tarakkie_R1_left
   - tarakkie_R1_right
+  - tarakkie_R1_trackball

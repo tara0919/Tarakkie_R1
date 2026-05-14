@@ -5,6 +5,19 @@
  */
 
 #include "tarakkie_R1.dtsi"
+#include "tarakkie_R1_trackball_shared.dtsi"
+
+&trackball_listener {
+    status = "okay";
+};
+
+/ {
+    trackball_input_relay {
+        compatible = "zmk,split-peripheral-input-relay";
+        relay-channel = <101>;
+        device = <&trackball_virtual>;
+    };
+};
 
 &kscan0 {
     row-gpios

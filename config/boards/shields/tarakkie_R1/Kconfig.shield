@@ -6,3 +6,6 @@ config SHIELD_TARAKKIE_R1_LEFT
 
 config SHIELD_TARAKKIE_R1_RIGHT
     def_bool $(shields_list_contains,tarakkie_R1_right)
+
+config SHIELD_TARAKKIE_R1_TRACKBALL
+    def_bool $(shields_list_contains,tarakkie_R1_trackball)
