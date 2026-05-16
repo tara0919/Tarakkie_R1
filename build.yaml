@@ -29,7 +29,7 @@ include:
     artifact-name: tarakkie_R1_left_studio
   - board: seeeduino_xiao_ble
     shield: tarakkie_R1_left
-    cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
+    snippet: zmk-usb-logging
     artifact-name: tarakkie_R1_left_usb_logging
   - board: seeeduino_xiao_ble
     shield: tarakkie_R1_right
