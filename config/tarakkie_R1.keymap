@@ -386,6 +386,12 @@
             bindings = <&kp GRAVE>;
             key-positions = <59 60>;
         };
+
+        studio_unlock_left {
+            bindings = <&studio_unlock>;
+            key-positions = <0 1 2 3>;
+            timeout-ms = <100>;
+        };
     };
 
     keymap {
