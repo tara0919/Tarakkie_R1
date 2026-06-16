@@ -32,6 +32,9 @@ keeps split BLE available for the right half, but disables the Studio BLE
 transport so Studio sessions use USB:
 - `tarakkie_R1_left_studio`
 
+After switching between old Studio builds and these builds, flash
+`settings_reset` once before pairing again so stale Studio settings are cleared.
+
 ## Technical Details (Environment Setup)
 
 If you are running `west build` manually inside the container, you MUST set the following environment variables:
