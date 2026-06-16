@@ -13,7 +13,9 @@
         label = "BATTERY";
         io-channels = <&adc 0>; // D0 is P0.02 (AIN0)
         output-ohms = <1000000>;
-        full-ohms = <8500000>; // Adjusted based on user metrics (1.425V @ D0=0.68V should be ~100%)
+        // ZMK v0.3 converts this reading with a Li-ion curve. This calibrated
+        // scale maps a fresh AA reading around 0.68V at D0 to roughly 100%.
+        full-ohms = <6200000>;
     };
 
     chosen {
