@@ -21,8 +21,11 @@
 include:
   - board: seeeduino_xiao_ble
     shield: tarakkie_R1_left
+    artifact-name: tarakkie_R1_left
+  - board: seeeduino_xiao_ble
+    shield: tarakkie_R1_left
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_TRANSPORT_BLE=n
     artifact-name: tarakkie_R1_left_studio
   - board: seeeduino_xiao_ble
     shield: tarakkie_R1_right

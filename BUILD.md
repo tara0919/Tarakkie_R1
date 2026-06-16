@@ -27,6 +27,9 @@ The built firmware files will be located in the `firmware/` directory:
 - `tarakkie_R1_left.uf2`
 - `tarakkie_R1_right.uf2`
 
+GitHub Actions also builds a USB-only Studio firmware artifact:
+- `tarakkie_R1_left_studio`
+
 ## Technical Details (Environment Setup)
 
 If you are running `west build` manually inside the container, you MUST set the following environment variables:
