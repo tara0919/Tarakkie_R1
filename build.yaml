@@ -28,6 +28,10 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_TRANSPORT_BLE=n -DCONFIG_ZMK_BEHAVIOR_LOCAL_ID_TYPE_CRC16=y
     artifact-name: tarakkie_R1_left_studio
   - board: seeeduino_xiao_ble
+    shield: tarakkie_R1_left
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_TRANSPORT_BLE=y -DCONFIG_ZMK_BEHAVIOR_LOCAL_ID_TYPE_CRC16=y
+    artifact-name: tarakkie_R1_left_studio_ble
+  - board: seeeduino_xiao_ble
     shield: tarakkie_R1_right
     artifact-name: tarakkie_R1_right
   - board: seeeduino_xiao_ble
