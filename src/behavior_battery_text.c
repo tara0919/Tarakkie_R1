@@ -87,92 +87,133 @@ static int queue_keycode(const struct zmk_behavior_binding_event *event, uint32_
     return zmk_behavior_queue_add(event, binding, false, KEY_WAIT_MS);
 }
 
-static int queue_level(const struct zmk_behavior_binding_event *event, uint8_t level) {
+static int queue_text_keycode(const struct zmk_behavior_binding_event *event, uint32_t keycode,
+                              uint8_t *typed_chars) {
+    int err = queue_keycode(event, keycode);
+
+    if (err == 0) {
+        (*typed_chars)++;
+    }
+
+    return err;
+}
+
+static int queue_level(const struct zmk_behavior_binding_event *event, uint8_t level,
+                       uint8_t *typed_chars) {
     static const uint32_t digits[] = {N0, N1, N2, N3, N4, N5, N6, N7, N8, N9};
     int err;
 
     level = MIN(level, 100);
 
     if (level == 100) {
-        err = queue_keycode(event, N1);
+        err = queue_text_keycode(event, N1, typed_chars);
         if (err < 0) {
             return err;
         }
 
-        err = queue_keycode(event, N0);
+        err = queue_text_keycode(event, N0, typed_chars);
         if (err < 0) {
             return err;
         }
 
-        return queue_keycode(event, N0);
+        return queue_text_keycode(event, N0, typed_chars);
     }
 
     if (level >= 10) {
-        err = queue_keycode(event, digits[level / 10]);
+        err = queue_text_keycode(event, digits[level / 10], typed_chars);
         if (err < 0) {
             return err;
         }
     }
 
-    return queue_keycode(event, digits[level % 10]);
+    return queue_text_keycode(event, digits[level % 10], typed_chars);
+}
+
+static int queue_select_previous_chars(const struct zmk_behavior_binding_event *event,
+                                       uint8_t typed_chars) {
+    for (uint8_t i = 0; i < typed_chars; i++) {
+        int err = queue_keycode(event, LS(LEFT));
+
+        if (err < 0) {
+            return err;
+        }
+    }
+
+    return 0;
 }
 
 static int queue_battery_text(const struct zmk_behavior_binding_event *event) {
     const uint8_t central_level = MIN(zmk_battery_state_of_charge(), 100);
     const bool peripheral_available = atomic_get(&peripheral_level_known);
     const uint8_t cached_peripheral_level = atomic_get(&peripheral_level);
+    uint8_t typed_chars = 0;
 
-    int err = queue_keycode(event, LS(L));
+    int err = queue_keycode(event, LANGUAGE_2);
+    if (err < 0) {
+        return err;
+    }
+
+    err = queue_text_keycode(event, LS(L), &typed_chars);
     if (err < 0) {
         return err;
     }
 
     // The apostrophe HID usage produces ':' on the configured Japanese layout.
-    err = queue_keycode(event, SQT);
+    err = queue_text_keycode(event, SQT, &typed_chars);
     if (err < 0) {
         return err;
     }
 
-    err = queue_level(event, central_level);
+    err = queue_level(event, central_level, &typed_chars);
     if (err < 0) {
         return err;
     }
 
-    err = queue_keycode(event, PERCENT);
+    err = queue_text_keycode(event, PERCENT, &typed_chars);
     if (err < 0) {
         return err;
     }
 
-    err = queue_keycode(event, SPACE);
+    err = queue_text_keycode(event, SPACE, &typed_chars);
     if (err < 0) {
         return err;
     }
 
-    err = queue_keycode(event, LS(R));
+    err = queue_text_keycode(event, LS(R), &typed_chars);
     if (err < 0) {
         return err;
     }
 
-    err = queue_keycode(event, SQT);
+    err = queue_text_keycode(event, SQT, &typed_chars);
     if (err < 0) {
         return err;
     }
 
     if (peripheral_available) {
-        err = queue_level(event, cached_peripheral_level);
+        err = queue_level(event, cached_peripheral_level, &typed_chars);
         if (err < 0) {
             return err;
         }
 
-        return queue_keycode(event, PERCENT);
+        err = queue_text_keycode(event, PERCENT, &typed_chars);
+        if (err < 0) {
+            return err;
+        }
+
+        return queue_select_previous_chars(event, typed_chars);
     }
 
-    err = queue_keycode(event, MINUS);
+    err = queue_text_keycode(event, MINUS, &typed_chars);
     if (err < 0) {
         return err;
     }
 
-    return queue_keycode(event, MINUS);
+    err = queue_text_keycode(event, MINUS, &typed_chars);
+    if (err < 0) {
+        return err;
+    }
+
+    return queue_select_previous_chars(event, typed_chars);
 }
 
 static int on_battery_text_pressed(struct zmk_behavior_binding *binding,
